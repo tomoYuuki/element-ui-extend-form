@@ -1,19 +1,21 @@
 <template>
-  <div id="app">
-    <formDemoVue></formDemoVue>
-  </div>
+    <div id="app">
+        <!-- <formDemoVue></formDemoVue> -->
+    </div>
 </template>
 
 <script>
-import formDemoVue from './pages/form-demo.vue'
+// import formDemoVue from './pages/form-demo.vue'
 export default {
-  name: 'App',
-  components: {
-    formDemoVue
-  },
-  data() {
-    return {}
-  }
+    name: 'App',
+
+    components: {
+        // formDemoVue
+    },
+
+    data() {
+        return {}
+    }
 }
 </script>
 

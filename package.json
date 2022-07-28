@@ -1,18 +1,47 @@
 {
     "name": "element-ui-extend-form",
+    "description": "基于 element-ui 的表单扩展",
     "version": "0.1.0",
-    "private": true,
+    "main": "./src/components/el-form-easy/index.js",
+    "files": [
+        "src/components/el-form-easy"
+    ],
+    "keywords": [
+        "element-ui",
+        "form",
+        "easy"
+    ],
+    "homepage": "https://github.com/bendanykykyk/element-ui-extend-form",
+    "bugs": "https://github.com/bendanykykyk/element-ui-extend-form/issues",
+    "license": "MIT",
+    "author": {
+        "name": "bendanykykyk",
+        "email": "",
+        "url": "https://github.com/bendanykykyk"
+    },
+    "contributors": [
+        {
+            "name": "kiccer",
+            "email": "1072907338@qq.com",
+            "url": "https://github.com/kiccer"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bendanykykyk/element-ui-extend-form"
+    },
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint",
+        "eslint-fix": "eslint --fix ."
     },
     "dependencies": {
-        "core-js": "^3.6.5",
-        "element-ui": "^2.15.9",
-        "vue": "^2.6.11"
     },
     "devDependencies": {
+        "core-js": "^3.6.5",
+        "vue": "^2.6.11",
+        "element-ui": "^2.15.9",
         "@vue/cli-plugin-babel": "~4.5.13",
         "@vue/cli-plugin-eslint": "~4.5.13",
         "@vue/cli-service": "~4.5.13",
