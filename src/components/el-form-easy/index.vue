@@ -24,7 +24,7 @@
             :rules="cfg.rules"
         >
             <component
-                :is="typeItems[cfg.type]"
+                :is="cfg.render ? { render: cfg.render } : typeItems[cfg.type]"
                 :value="_value[cfg.key]"
                 :config="cfg"
                 @change="onChange"
@@ -96,9 +96,9 @@ export default {
         }
     },
 
-    mounted () {
-        console.log(this)
-    },
+    // mounted () {
+    //     console.log(this)
+    // },
 
     methods: {
         onChange (key, val) {

@@ -29,6 +29,14 @@ export default {
                     rules: [
                         { required: true }
                     ]
+                },
+                {
+                    label: '自定义',
+                    render: () => {
+                        return (
+                            <span>test</span>
+                        )
+                    }
                 }
             ]
         }
