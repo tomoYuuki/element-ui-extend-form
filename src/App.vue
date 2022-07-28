@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <!-- <formDemoVue></formDemoVue> -->
+        <ElFormEasy/>
     </div>
 </template>
 

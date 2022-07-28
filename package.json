@@ -2,7 +2,7 @@
     "name": "element-ui-extend-form",
     "description": "基于 element-ui 的表单扩展",
     "version": "0.1.0",
-    "main": "./src/components/el-form-easy/index.js",
+    "main": "./src/components/el-form-easy/index.vue",
     "files": [
         "src/components/el-form-easy"
     ],

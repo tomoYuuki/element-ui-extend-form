@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'el-form-easy'
+    name: 'ElFormEasy'
 }
 </script>
 
