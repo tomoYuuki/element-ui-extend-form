@@ -28,7 +28,19 @@ export default {
                     // },
                     rules: [
                         { required: true }
-                    ]
+                    ],
+                    slots: {
+                        'prefix':() => {
+                            return <el-image
+                                style="width:40px;"
+                                src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
+                        },
+                        'suffix':() => {
+                            return <el-image
+                                style="width:40px;"
+                                src="https://fastly.jsdelivr.net/npm/@vant/assets/cat.jpeg" />
+                        },
+                    }
                 },
                 {
                     label: '自定义',
