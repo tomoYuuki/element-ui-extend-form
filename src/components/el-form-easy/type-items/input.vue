@@ -5,10 +5,15 @@
         v-bind="config.props"
         @input="onInput"
     >
-    <template v-for="[key,render] in Object.entries(config.slots)" v-slot:[key]>
-         <SlotContainer :key="key" :render="render" ></SlotContainer>
-    </template>
-      
+        <template
+            v-for="[key,render] in Object.entries(config.slots)"
+            v-slot:[key]
+        >
+            <SlotContainer
+                :key="key"
+                :render="render"
+            />
+        </template>
     </ElInput>
 </template>
 
