@@ -9,7 +9,9 @@ module.exports = {
 
     extends: [
         'plugin:vue/essential',
-        'eslint:recommended'
+        'plugin:vue/strongly-recommended',
+        'plugin:vue/recommended',
+        'eslint:standard'
     ],
 
     parserOptions: {
@@ -18,6 +20,8 @@ module.exports = {
 
     rules: {
         indent: ['error', 4],
+        'vue/html-indent': ['error', 4],
+        'vue/require-default-prop': 'off',
         'no-console': IS_PROD ? 'warn' : 'off',
         'no-debugger': IS_PROD ? 'warn' : 'off',
     },
