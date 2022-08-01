@@ -4,15 +4,27 @@
         :value="value"
         v-bind="config.props"
         @input="onInput"
-    />
+    >
+        <template
+            v-for="[key,render] in Object.entries(config.slots)"
+            v-slot:[key]
+        >
+            <SlotContainer
+                :key="key"
+                :render="render"
+            />
+        </template>
+    </ElInput>
 </template>
 
 <script>
+
 export default {
     name: 'el-form-easy-type-input',
 
     components: {
-        ElInput: () => import('element-ui/packages/input/src/input.vue')
+        ElInput: () => import('element-ui/packages/input/src/input.vue'),
+        SlotContainer: ()=>import('@/components/slot-container')
     },
     
     props: {
