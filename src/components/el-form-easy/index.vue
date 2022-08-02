@@ -37,6 +37,7 @@
 // 根据传入 config 的 type 按需引入组件
 const typeItems = {
     input: () => import('./type-items/input.vue'),
+    select: () => import('./type-items/select.vue'),
 }
 
 export default {

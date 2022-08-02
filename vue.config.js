@@ -57,6 +57,17 @@ module.exports = {
                 symbolId: 'icon-[name]'
             })
             .end()
+        
+        config.module
+            .rule('thejs')
+            .test(/\.js$/)
+            .include
+            .add(path.resolve('src'))
+            .add(path.resolve('node_modules/element-ui/packages'))
+            .end()
+            .use('babel-loader')
+            .loader('babel-loader')
+            .end()
 
         config.when(process.env.NODE_ENV !== 'development', (config) => {
             config
