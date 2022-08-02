@@ -80,10 +80,6 @@ export default {
         }
     },
     mounted() {
-        console.log(  this.$refs['form'].$refs['hobbiesRef'] )    
-        console.log(  this.$refs['hobbiesRef'] )    
-     
-        
     },
     methods: {
         TextContainerExample() {

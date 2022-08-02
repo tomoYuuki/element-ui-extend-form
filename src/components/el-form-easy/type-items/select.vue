@@ -1,6 +1,5 @@
 <template>
     <ElSelect
-        :ref="refName"
         class="el-form-easy-type-input"
         :value="value"
         v-bind="config.props"
@@ -54,10 +53,7 @@ export default {
         },
     },
     computed: {
-        refName() {
-            console.log(`${this.config.key}Ref`)
-            return `${this.config.key}Ref`
-        }
+      
     },
 
     methods: {
