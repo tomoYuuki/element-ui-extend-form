@@ -20,8 +20,7 @@
 <script>
 
 export default {
-    name: 'el-form-easy-type-input',
-
+    name: 'ElFormEasyTypeInput',
     components: {
         ElInput: () => import('element-ui/packages/input/src/input.vue'),
         SlotContainer: ()=>import('@/components/slot-container')
