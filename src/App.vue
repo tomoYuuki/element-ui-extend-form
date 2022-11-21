@@ -7,7 +7,9 @@
             @change="onChange"
         />
 
-        <ElButton @click="onSubmit">提交</ElButton>
+        <ElButton @click="onSubmit">
+            提交
+        </ElButton>
     </div>
 </template>
 
@@ -19,15 +21,19 @@ export default {
 
     data() {
         return {
-            formData: {},
+            counter:1,
+            formData: {
+                name:''
+            },
+            ajaxHobbies:[],
             formConfig: [
                 {
                     label: '姓名',
                     key: 'name',
                     type: 'input',
-                    // props: {
-                    //     disabled: true
-                    // },
+                    props: {
+                        disabled: true
+                    },
                     rules: [
                         { required: true }
                     ],
@@ -44,14 +50,21 @@ export default {
                     label: '爱好',
                     key: 'hobbies',
                     type: 'select',
-                    typeData: () => {
-                        return [{value:1,label:'唱'},{value:2,label:'跳'},{value:3,label:'RAP',disabled:true}]
+                    props: {
+                    
                     },
+                    // disabled: () => {
+                    //     return this.counter >  0 
+                    // },
+                    isDisabled:false,
+                    isHidden:false,
+                    typeData: [{value:1,label:'唱'}],
                     on: {
                         change(val) {
                             console.log(val)
                         }
                     },
+                    
                     slots: {
                         'default': (h, options) => {
                         
@@ -68,20 +81,37 @@ export default {
                         // }
                     }
                 },
-                {
-                    label: '自定义',
-                    render: () => {
-                        return (
-                            <span>test</span>
-                        )
-                    }
-                }
+                // {
+                //     label: '自定义',
+                //     render: () => {
+                //         return (
+                //             <span>test</span>
+                //         )
+                //     }
+                // }
             ]
         }
     },
     mounted() {
+        // 调用ajax
+        this.queryHobbies()
+        // 一些业务代码
+        const hobbiesItem = this.formConfig.find(item => item.key == 'hobbies')
+        hobbiesItem.isHidden = false
     },
     methods: {
+        queryHobbies() {
+            console.log('调用queryHobbies')
+            setTimeout(() => {
+                this.ajaxHobbies = [{value:1,label:'唱'},{value:2,label:'跳'},{value:3,label:'RAP',disabled:true}]
+                // 一些业务代码
+                const hobbiesItem = this.formConfig.find(item => item.key == 'hobbies')
+                hobbiesItem.typeData = [...this.ajaxHobbies]
+                hobbiesItem.isDisabled =true
+            }, 1000);
+
+            
+        },
         TextContainerExample() {
             return <span>文本</span>  
         },

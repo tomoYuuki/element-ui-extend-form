@@ -11,7 +11,8 @@ module.exports = {
         'plugin:vue/essential',
         'plugin:vue/strongly-recommended',
         'plugin:vue/recommended',
-        'eslint:standard'
+        'eslint:recommended'
+        // 'eslint:standard'
     ],
 
     parserOptions: {

@@ -16,20 +16,24 @@
         :label-suffix="labelSuffix"
         @validate="onValidate"
     >
-        <ElFormItem
+        <div
             v-for="(cfg, cfg_i) in config"
             :key="cfg_i"
-            :label="cfg.label"
-            :prop="cfg.key"
-            :rules="cfg.rules"
         >
-            <component
-                :is="cfg.render ? { render: cfg.render } : typeItems[cfg.type]"
-                :value="_value[cfg.key]"
-                :config="cfg"
-                @change="onChange"
-            />
-        </ElFormItem>
+            <ElFormItem
+                v-if="!cfg.isHidden"
+                :label="cfg.label"
+                :prop="cfg.key"
+                :rules="cfg.rules"
+            >
+                <component
+                    :is="cfg.render ? { render: cfg.render } : typeItems[cfg.type]"
+                    :value="_value[cfg.key]"
+                    :config="cfg"
+                    @change="onChange"
+                />
+            </ElFormItem>
+        </div>
     </ElForm>
 </template>
 
@@ -94,12 +98,15 @@ export default {
             set (val) {
                 this.$emit('input', val)
             }
-        }
+        },
+     
+        // isHide() {
+        //     return item => {
+        //         return typeof item.hide === 'function'  ? item.hide() : item.hide
+        //     }
+        // }
+        
     },
-
-    // mounted () {
-    //     console.log(this)
-    // },
 
     methods: {
         onChange (key, val) {
@@ -121,10 +128,10 @@ export default {
         resetFields () {
             this.$refs.form.resetFields()
         },
-
         clearValidate (props) {
             this.$refs.form.clearValidate(props)
-        }
+        },
+      
     }
 }
 </script>
