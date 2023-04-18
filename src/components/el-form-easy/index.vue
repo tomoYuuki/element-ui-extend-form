@@ -49,6 +49,9 @@ const typeItems = {
     radio: () => import('./type-items/radio.vue'),
 }
 
+
+
+
 export default {
     name: 'ElFormEasy',
 
@@ -67,7 +70,6 @@ export default {
         validateOnRuleChange: Boolean,
         labelPosition: String,
         labelSuffix: String,
-
         size: {
             type: String,
             default: 'small'
@@ -101,11 +103,18 @@ export default {
 
     data() {
         return {
-            typeItems
+            typeItems,
         }
     },
 
     computed: {
+        // 处理一下config
+        processedFormItem() {
+            // 复制一个新的对象，避免直接修改 props
+            let config = JSON.parse(JSON.stringify(this.config))
+            
+            return config
+        },
         _value: {
             get () {
                 return this.value

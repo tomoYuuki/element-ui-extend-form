@@ -4,7 +4,6 @@
             ref="form"
             v-model="formData"
             :config="formConfig"
-            :form-col-layout="formColLayout"
             @change="onChange"
         />
         <ElButton @click="onSubmit">
@@ -26,14 +25,6 @@ export default {
                 name: ''
             },
             ajaxHobbies: [],
-            formColLayout: {
-                span: 24,
-                // xl: 6, // >1920px 4个
-                // lg: 8,
-                // md: 12,
-                // sm: 24,
-                // xs: 24
-            },
             formConfig: [
                 {
                     label: '性别',
