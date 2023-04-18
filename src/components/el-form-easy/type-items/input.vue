@@ -6,7 +6,7 @@
         @input="onInput"
     >
         <template
-            v-for="[key,render] in Object.entries(config.slots)"
+            v-for="[key,render] in Object.entries(config.slots || [])"
             v-slot:[key]
         >
             <SlotContainer

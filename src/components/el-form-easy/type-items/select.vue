@@ -5,11 +5,12 @@
         :value="value"
         :disabled="config.isDisabled"
         v-bind="config.props"
+        style="width: 100%"
         v-on="config.on"
         @input="onInput"
     >
         <template
-            v-for="[key,render] in Object.entries(config.slots)"
+            v-for="[key,render] in Object.entries(config.slots || [])"
             v-slot:[key]
         >
             <SlotContainer

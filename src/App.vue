@@ -4,9 +4,9 @@
             ref="form"
             v-model="formData"
             :config="formConfig"
+            :form-col-layout="formColLayout"
             @change="onChange"
         />
-
         <ElButton @click="onSubmit">
             提交
         </ElButton>
@@ -21,27 +21,46 @@ export default {
 
     data() {
         return {
-            counter:1,
+            counter: 1,
             formData: {
-                name:''
+                name: ''
             },
-            ajaxHobbies:[],
+            ajaxHobbies: [],
+            formColLayout: {
+                span: 24,
+                // xl: 6, // >1920px 4个
+                // lg: 8,
+                // md: 12,
+                // sm: 24,
+                // xs: 24
+            },
             formConfig: [
+                {
+                    label: '性别',
+                    key: 'sex',
+                    type: 'radio',
+                    // props: {
+                    //     disabled: true
+                    // },
+                    rules: [
+                        { required: true }
+                    ]
+                },
                 {
                     label: '姓名',
                     key: 'name',
                     type: 'input',
-                    props: {
-                        disabled: true
-                    },
+                    // props: {
+                    //     disabled: true
+                    // },
                     rules: [
                         { required: true }
                     ],
                     slots: {
-                        'prefix':() => {
+                        'prefix': () => {
                             return this.ImageContainerExample()
                         },
-                        'suffix':() => {
+                        'suffix': () => {
                             return this.ImageContainerExample()
                         },
                     }
@@ -51,27 +70,24 @@ export default {
                     key: 'hobbies',
                     type: 'select',
                     props: {
-                    
                     },
                     // disabled: () => {
                     //     return this.counter >  0 
                     // },
-                    isDisabled:false,
-                    isHidden:false,
-                    typeData: [{value:1,label:'唱'}],
+                    isDisabled: false,
+                    isHidden: false,
+                    typeData: [{ value: 1, label: '唱' }],
                     on: {
                         change(val) {
                             console.log(val)
                         }
                     },
-                    
                     slots: {
                         'default': (h, options) => {
-                        
                             return <div>
                                 {
                                     options.map(option => {
-                                        return <el-option  key={option.value}  value={option.value} label={'我喜欢'+option.label}></el-option>
+                                        return <el-option key={option.value} value={option.value} label={'我喜欢' + option.label}></el-option>
                                     })
                                 }
                             </div>
@@ -101,19 +117,18 @@ export default {
     },
     methods: {
         queryHobbies() {
-            console.log('调用queryHobbies')
             setTimeout(() => {
-                this.ajaxHobbies = [{value:1,label:'唱'},{value:2,label:'跳'},{value:3,label:'RAP',disabled:true}]
+                this.ajaxHobbies = [{ value: 1, label: '唱' }, { value: 2, label: '跳' }, { value: 3, label: 'RAP', disabled: true }]
                 // 一些业务代码
                 const hobbiesItem = this.formConfig.find(item => item.key == 'hobbies')
                 hobbiesItem.typeData = [...this.ajaxHobbies]
-                hobbiesItem.isDisabled =true
+                // hobbiesItem.isDisabled =true
             }, 1000);
 
-            
+
         },
         TextContainerExample() {
-            return <span>文本</span>  
+            return <span>文本</span>
         },
         ImageContainerExample() {
             return <el-image

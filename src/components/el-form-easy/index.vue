@@ -16,24 +16,28 @@
         :label-suffix="labelSuffix"
         @validate="onValidate"
     >
-        <div
-            v-for="(cfg, cfg_i) in config"
-            :key="cfg_i"
-        >
-            <ElFormItem
-                v-if="!cfg.isHidden"
-                :label="cfg.label"
-                :prop="cfg.key"
-                :rules="cfg.rules"
+        <el-row>
+            <div
+                v-for="(cfg, cfg_i) in config"
+                :key="cfg_i"
             >
-                <component
-                    :is="cfg.render ? { render: cfg.render } : typeItems[cfg.type]"
-                    :value="_value[cfg.key]"
-                    :config="cfg"
-                    @change="onChange"
-                />
-            </ElFormItem>
-        </div>
+                <el-col v-bind="formColLayout">
+                    <ElFormItem
+                        v-if="!cfg.isHidden"
+                        :label="cfg.label"
+                        :prop="cfg.key"
+                        :rules="cfg.rules"
+                    >
+                        <component
+                            :is="cfg.render ? { render: cfg.render } : typeItems[cfg.type]"
+                            :value="_value[cfg.key]"
+                            :config="cfg"
+                            @change="onChange"
+                        />
+                    </ElFormItem>
+                </el-col>
+            </div>
+        </el-row>
     </ElForm>
 </template>
 
@@ -42,6 +46,7 @@
 const typeItems = {
     input: () => import('./type-items/input.vue'),
     select: () => import('./type-items/select.vue'),
+    radio: () => import('./type-items/radio.vue'),
 }
 
 export default {
@@ -81,7 +86,17 @@ export default {
         config: {
             type: Array,
             default: () => []
-        }
+        },
+        formColLayout: {
+            type: Object,
+            default: () => ({
+                xl: 6, // >1920px 4个
+                lg: 8,
+                md: 12,
+                sm: 24,
+                xs: 24
+            })
+        },
     },
 
     data() {
